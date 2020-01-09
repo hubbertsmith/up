@@ -13,10 +13,9 @@ ANES2016 <- da36824.0001
 #clean data
 #newdata
 #does including employment status increase multicollinearity? 
-anes_subset01 <- subset(ANES2016, select = c(V161021, V161112, V161342, V161307, V161019,
+anes_subset02 <- subset(ANES2016, select = c(V161021, V161112, V161342, V161307, V161019,
                                              V161270, V161113, V161267, V161277, V161004))
-anes_subset02 <- na.omit(anes_subset01) #na.fail? library(mice)?
-#need to code numbers with or without quotes 
+
 anes_subset02$primary2016 <- recode(anes_subset02$V161021,
                                     "(1) 1. Yes, voted in primary or caucus" = 1, 
                                     "(2) 2. No, didn't vote in primary or caucus" = 0)
@@ -30,7 +29,7 @@ anes_subset02$V161307 <- recode(anes_subset02$V161307,
 
 summary(anes_subset02$V161019)
 
-anes_subset02$V161019 <- recode(anes_subset02@V161019,
+anes_subset02$V161019 <- recode(anes_subset02$V161019,
                                 "(1) 1. Democratic party" = 0,
                                 "(2) 2. Republican party" = 1, 
                                 "(4) 4. None or 'independent" = 3,
