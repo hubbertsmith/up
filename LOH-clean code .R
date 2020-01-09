@@ -13,7 +13,7 @@ ANES2016 <- da36824.0001
 #clean data
 #newdata
 #does including employment status increase multicollinearity? 
-anes_subset01 <- subset(ANES2016, select = c(V161021, V161112, V161342, V161307, 
+anes_subset01 <- subset(ANES2016, select = c(V161021, V161112, V161342, V161307, V161019,
                                              V161270, V161113, V161267, V161277, V161004))
 anes_subset02 <- na.omit(anes_subset01) #na.fail? library(mice)?
 #need to code numbers with or without quotes 
@@ -27,6 +27,14 @@ anes_subset02$V161307 <- recode(anes_subset02$V161307,
                                 "(2) 2. Working class" = 0, 
                                 "(3) 3. Middle class" = 1, 
                                 "(4) 4. Upper class" = 1)
+
+summary(anes_subset02$V161019)
+
+anes_subset02$V161019 <- recode(anes_subset02@V161019,
+                                "(1) 1. Democratic party" = 0,
+                                "(2) 2. Republican party" = 1, 
+                                "(4) 4. None or 'independent" = 3,
+                                "(5) 5. Other SPECIFY" = 3)
 
 #need to exclude 90 & 95?
 anes_subset02$V161270 <- recode(anes_subset02$V161270, 
@@ -120,6 +128,14 @@ anes_subset02$job[anes_subset02$V161277== 1] <- "Employed"
 anes_subset02$job[anes_subset02$V161277== 0] <- "Unemployed"
 anes_subset02$job <- factor(anes_subset02$job)
 
+anes_subset02$party <- -1
+anes_subset02$party[anes_subset02$V161019== 0] <- "dem"
+anes_subset02$party[anes_subset02$V161019== 1] <- "rep"
+anes_subset02$party[anes_subset02$V161019== 2] <- "ind_other"
+anes_subset02$party[anes_subset02$V161019== 3] <- "ind_other"
+anes_subset02$party <- factor(anes_subset02$party)
+
+
 
 anes_subset03 <- na.omit(anes_subset02)
 
@@ -137,4 +153,3 @@ summary(output3)
 
 output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = anes_subset03)
 summary(output4)
-
