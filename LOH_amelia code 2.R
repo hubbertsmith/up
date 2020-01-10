@@ -69,7 +69,7 @@ am_output2 <- bind_rows(unclass(am_output$imputations), .id = "m") %>%
   group_by(m) %>%
   nest()
 
-am_final <- rbind(am_output2[[2]][[1]],am_output2[[2]][[2]],am_output2[[2]][[3]],am_output2[[2]][[4]],am_output2[[2]][[5]])
+am_output3 <- rbind(am_output2[[2]][[1]],am_output2[[2]][[2]],am_output2[[2]][[3]],am_output2[[2]][[4]],am_output2[[2]][[5]])
 
-
+am_clean <- na.omit(am_output3)
 
