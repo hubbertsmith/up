@@ -26,10 +26,10 @@ anes_subset02$V161307 <- recode(anes_subset02$V161307,
 
 
 anes_subset02$V161019 <- recode(anes_subset02$V161019,
-                                "(1) 1. Democratic party" = 1,
-                                "(2) 2. Republican party" = 2, 
-                                "(4) 4. None or 'independent" = 3,
-                                "(5) 5. Other SPECIFY" = 3)
+                                "(1) 1. Democratic party" = 0,
+                                "(2) 2. Republican party" = 1, 
+                                "(4) 4. None or 'independent" = 2,
+                                "(5) 5. Other SPECIFY" = 2)
 
 anes_subset02$V161270 <- recode(anes_subset02$V161270, 
                                 "(02) 2. 1st, 2nd, 3rd or 4th grade" = 2, 
@@ -63,13 +63,13 @@ anes_subset02$V161004 <- recode(anes_subset02$V161004, "(1) 1. Very much interes
                                 "(2) 2. Somewhat interested" = 2,
                                 "(3) 3. Not much interested" = 1)
 
-am_output <- amelia(anes_subset02, idvars = "V161021")
+am_output <- amelia(anes_subset02, idvars = "primary2016", noms = c("V161307","V161113", "V161277", "V161021"), 
+                    ords =c ("V161112", "V161270", "V161019", "V161267"))
 
 am_output2 <- bind_rows(unclass(am_output$imputations), .id = "m") %>%
   group_by(m) %>%
   nest()
 
-am_output3 <- rbind(am_output2[[2]][[1]],am_output2[[2]][[2]],am_output2[[2]][[3]],am_output2[[2]][[4]],am_output2[[2]][[5]])
+am_clean <- rbind(am_output2[[2]][[1]],am_output2[[2]][[2]],am_output2[[2]][[3]],am_output2[[2]][[4]],am_output2[[2]][[5]])
 
-am_clean <- na.omit(am_output3)
 
