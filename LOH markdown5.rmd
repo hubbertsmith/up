@@ -1,5 +1,6 @@
 ---
 title: "LOH Team - Healthcare and Elections"
+author: "Lauren Kostich, Olan Trosky, Hubbert Smith"
 output: html_document
 ---
 
@@ -7,13 +8,19 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Thesis
 
-I.	Abstract
-II.	Application of Modeling
-III.	Data Analysis 
-IV.	Report
-a.	Intellectual or Political Context
+## ......................................
+
+### I.	Abstract
+### II.	Application of Modeling
+### III.	Data Analysis 
+### IV.	Report
+
+## about the study
+
+In an attempt to better understand the interaction between government policy and political participation, researchers conducted a study on the impacts of Medicaid enrollment on voter turnout and registration. In 2008, Oregon used a lottery system to allocate 10,000 available slots in their Medicaid program to a waiting list of 90,000 low-income, previously uninsured adults (aged 19-64). The researchers linked administrative data on lottery participants and Medicaid enrollment with Oregon’s statewide voter lists, allowing them to analyze voter turnout and registration for 2010. The researchers highlight the presence of confounding variables but conclude that the use of a randomized evaluate design avoids contamination by the confounding variables. These confounding variables include socio-economic status and health which could both impact voter participation (384). The study concluded that Medicaid enrollment impacted the 2008 election, but not subsequent elections. It should be noted that the 2008 election had much higher turnout the November 2010 election which can be attributed to 2008 being a Presidential election year. The study also notes that the Oregon expansion was not partisan or politicized while the national conversation was highly divisive.
+
+#### a.	Intellectual or Political Context
 
 Regardless of party, health insurance coverage remains a crucial campaign issue for candidates to resonate with voters on. The issue of healthcare has become incredibly contentious issue within party structures and between the two major parties. The debate largely focuses on next steps for the Affordable Care Act, commonly known as Obamacare. 
 The Patient Protection and Affordable Care Act was signed into law in 2010, emphasizing the expansion of Medicaid, making health insurance more affordable, and supporting innovation to lower medical costs overall. 
@@ -24,35 +31,215 @@ Currently, literature exists on Medicaid’s impact on voter participation in ge
 
 The Impact of Medicaid Expansion on Voter Participation: Evidence from the Oregon Health Insurance Experiment "https://economics.mit.edu/files/18481"
 
-## about the study
 
-In an attempt to better understand the interaction between government policy and political participation, researchers conducted a study on the impacts of Medicaid enrollment on voter turnout and registration. In 2008, Oregon used a lottery system to allocate 10,000 available slots in their Medicaid program to a waiting list of 90,000 low-income, previously uninsured adults (aged 19-64). The researchers linked administrative data on lottery participants and Medicaid enrollment with Oregon’s statewide voter lists, allowing them to analyze voter turnout and registration for 2010. The researchers highlight the presence of confounding variables but conclude that the use of a randomized evaluate design avoids contamination by the confounding variables. These confounding variables include socio-economic status and health which could both impact voter participation (384). The study concluded that Medicaid enrollment impacted the 2008 election, but not subsequent elections. It should be noted that the 2008 election had much higher turnout the November 2010 election which can be attributed to 2008 being a Presidential election year. The study also notes that the Oregon expansion was not partisan or politicized while the national conversation was highly divisive.
-
-
-b.	Data Collection Procedure 
+#### b.	Data Collection Procedure 
 
 Our data source was the American National Election Studies’ (ANES) 2016 Time Series Study.  The study is conducted through a collaboration between University of Michigan and Stanford University. The data includes various demographics and political variables taken from pre- and post-election surveys of the voting-age population through both face-to-face and internet surveys. The pre-election survey was conducted between September 7th and November 7th, 2016 and the post-election survey between November 9th and January 8th, 2017. We retrieved the data from the Inter-University Consortium for Political and Social Research. 
 
-c.	Features of the data 
+#### c.	Features of the data 
 One caveat of the data set was the response rate was not optimal. Once we begun cleaning the data, we saw our sample size shrink to just under 1000 responses. It should also be noted that respondents from Alaska and Hawaii were not included in the face-to-face model but were included in the Internet component. Individuals from Alaska and Hawaii make up less than one percent of the study population. The independent and dependent variables were both part of the pre-election questionnaire. 
 
-d.	Statistic Methods
+#### d.	Statistic Methods
 Our independent variable x tracked whether or not an individual had healthcare coverage. Our independent variable, y, tracked whether or not an individual had voted in the 2016 presidential primary. Our control variables are gender, race, and education level. Based on the data provided and scope of our question, we presented the following hypothesis: 
 
+# ................................................
+# Clean the Data
+```{r}
 
-
-
-# Including Plots
-
-
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+library(tidyverse) # data wrangling
+library(ggplot2)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+# not sure what libraries we are going to need. I copied these over from previous code
+library(haven)
+library(descr)
+library(ggplot2)
+library(stargazer)
+library(tidyverse)
+
+#rename the data
+ANES2016 <- read_csv("da36824.csv")
+
+#split the sample to test the model?
+
+#clean data
+#newdata
+#does including employment status increase multicollinearity? 
+anes_subset02 <- subset(ANES2016, select = c(V161021, V161112, V161342, V161307, V161019,
+                                             V161270, V161113, V161267, V161277, V161004))
+anes_subset02 <- na.omit(anes_subset01) #na.fail? library(mice)?
+#need to code numbers with or without quotes 
+
+anes_subset02$primary2016 <- recode(anes_subset02$V161021,
+                                    "(1) 1. Yes, voted in primary or caucus" = 1, 
+                                    "(2) 2. No, didn't vote in primary or caucus" = 0)
+anes_subset02$V161342 <- recode(anes_subset02$V161342, 
+                                "(2) 2. Female" = 1, "(1) 1. Male" = 0)
+anes_subset02$V161307 <- recode(anes_subset02$V161307, 
+                                "(1) 1. Lower class" = 0, 
+                                "(2) 2. Working class" = 0, 
+                                "(3) 3. Middle class" = 1, 
+                                "(4) 4. Upper class" = 1)
+
+summary(anes_subset02$V161019)
+
+anes_subset02$V161019 <- recode(anes_subset02$V161019,
+                                "(1) 1. Democratic party" = 0,
+                                "(2) 2. Republican party" = 1, 
+                                "(4) 4. None or 'independent" = 3,
+                                "(5) 5. Other SPECIFY" = 3)
+
+#need to exclude 90 & 95?
+anes_subset02$V161270 <- recode(anes_subset02$V161270, 
+                                "(02) 2. 1st, 2nd, 3rd or 4th grade" = 2, 
+                                "(03) 3. 5th or 6th grade" = 3, 
+                                "(04) 4. 7th or 8th grade" = 4, 
+                                "(05) 5. 9th grade" = 5, 
+                                "(06) 6. 10th grade" = 6, 
+                                "(07) 7. 11th grade" = 7, 
+                                "(08) 8. 12th grade no diploma" = 8, 
+                                "(09) 9. High school graduate- high school diploma or equivalent (for example: GED)" = 9, 
+                                "(10) 10. Some college but no degree" = 10,
+                                "(11) 11. Associate degree in college - occupational/vocational program" = 11,
+                                "(12) 12. Associate degree in college -- academic program" = 12,
+                                "(13) 13. Bachelor's degree (for example: BA, AB, BS)" = 13,
+                                "(14) 14. Master's degree (for example: MA, MS, MENG, MED, MSW, MBA)" = 14,
+                                "(15) 15. Professional school degree (for example: MD, DDS, DVM, LLB, JD)" = 15,
+                                "(16) 16. Doctorate degree (for example: PHD, EDD)" = 16)
+anes_subset02$V161112 <- recode(anes_subset02$V161112, "(1) 1. Yes" = 1, 
+                                "(2) 2. No" = 0)
+anes_subset02$V161113 <- recode(anes_subset02$V161113, "(1) 1. Favor" = 1, 
+                                "(2) 2. Oppose" = 2, 
+                                "(3) 3. Neither favor nor oppose" = 3)
+anes_subset02$V161277 <- recode(anes_subset02$V161277, "(1) 1. Initial employment status: working now" = 1,
+                                "2) 2. Initial employment status: temporarily laid off" = 0,
+                                "(4) 4. Initial employment status: unemployed" = 0,
+                                "(5) 5. Initial employment status: retired" = 0,
+                                "(6) 6. Initial employment status: permanently disabled" = 0, 
+                                "(7) 7. Initial employment status: homemaker" = 0, 
+                                "(8) 8. Initial employment status: student" = 0)
+anes_subset02$V161004 <- recode(anes_subset02$V161004, "(1) 1. Very much interested" = 1,
+                                "(2) 2. Somewhat interested" = 2,
+                                "(3) 3. Not much interested" = 3)
 
 
+
+#dependent variable 
+#pre 2016: voted in presidential primary
+anes_subset02$dep <- -1
+anes_subset02$dep[anes_subset02$primary2016== 1] <- "voted"
+anes_subset02$dep[anes_subset02$primary2016== 0] <- "abstained"
+anes_subset02$dep <- factor(anes_subset02$dep)
+
+
+#new variable: gender
+anes_subset02$sex <- -1
+anes_subset02$sex[anes_subset02$V161342== 1] <- "female"
+anes_subset02$sex[anes_subset02$V161342== 0] <- "male"
+anes_subset02$sex <- factor(anes_subset02$sex)
+
+#new variable: socioeconomic status 
+anes_subset02$socio <- -1
+anes_subset02$socio[anes_subset02$V161307== 0] <- "low"
+anes_subset02$socio[anes_subset02$V161307== 1] <- "high"
+anes_subset02$socio <- factor(anes_subset02$socio)
+
+#new variable: Education 
+#need to get rid of "others" (90 & 95)
+anes_subset02$edu <- -1 
+anes_subset02$edu[anes_subset02$V161270 <= 9] <- "low"
+anes_subset02$edu[anes_subset02$V161270 >= 10]<- "middle" #10-13
+anes_subset02$edu[anes_subset02$V161270 >= 14] <- "high" #14-16
+anes_subset02$edu <- factor(anes_subset02$edu)
+
+#independent variable: health insurance 
+#does the subject have health insurance?
+anes_subset02$insurance <- -1
+anes_subset02$insurance[anes_subset02$V161112== 1] <- "coverage"
+anes_subset02$insurance[anes_subset02$V161112== 0] <- "no coverage"
+anes_subset02$insurance <- factor(anes_subset02$insurance)
+
+#new variable: favor or oppose ACA
+anes_subset02$ACA <- -1
+anes_subset02$ACA[anes_subset02$V161113== 1] <- "favor"
+anes_subset02$ACA[anes_subset02$V161113== 2] <- "oppose"
+anes_subset02$ACA[anes_subset02$V161113== 3] <- "neutral"
+anes_subset02$ACA <- factor(anes_subset02$ACA)
+
+#new variable: age 
+anes_subset02$age <- -1
+anes_subset02$age[anes_subset02$V161267 >= 18] <- "18-30 years old"
+anes_subset02$age[anes_subset02$V161267 >= 30] <- "30-39 years old"
+anes_subset02$age[anes_subset02$V161267 >= 40] <- "40-49 years old"
+anes_subset02$age[anes_subset02$V161267 >= 50] <- "50-59 years old"
+anes_subset02$age[anes_subset02$V161267 >= 60] <- "60+ years old"
+anes_subset02$age <- factor(anes_subset02$age)
+
+#new variable: employment status
+anes_subset02$job <- -1
+anes_subset02$job[anes_subset02$V161277== 1] <- "Employed"
+anes_subset02$job[anes_subset02$V161277== 0] <- "Unemployed"
+anes_subset02$job <- factor(anes_subset02$job)
+
+anes_subset02$party <- -1
+anes_subset02$party[anes_subset02$V161019== 0] <- "dem"
+anes_subset02$party[anes_subset02$V161019== 1] <- "rep"
+anes_subset02$party[anes_subset02$V161019== 2] <- "ind_other"
+anes_subset02$party[anes_subset02$V161019== 3] <- "ind_other"
+anes_subset02$party <- factor(anes_subset02$party)
+
+
+
+anes_subset03 <- na.omit(anes_subset02)
+
+#Linear models
+
+output1 <- lm(primary2016 ~ V161112, data=anes_subset03)
+summary(output1)
+
+output2 <- lm(primary2016 ~ V161112 + V161277 + V161267 + V161113 + V161270 + V161307 + V161342, data = anes_subset03)
+summary(output2)
+
+anes_subset03$insurance <- relevel(anes_subset03$insurance, ref = "no coverage")
+output3 <- lm(primary2016 ~ insurance, data = anes_subset03)
+summary(output3)
+
+output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = anes_subset03)
+summary(output4)
+
+```
+
+
+
+```{r}
+ggplot(data = anes_subset02) +
+  geom_bar(mapping = aes(x= sex, fill = sex))
+
+ggplot(data = anes_subset02) +
+  geom_bar(mapping = aes(x= age, fill =age))
+
+summary(anes_subset02$age)
+
+
+anes_subset02$age <- "NA"
+anes_subset02$age[anes_subset02$V161267>= 18 | anes_subset02$V161267<= 29] <- "18-30 years old"
+anes_subset02$age[anes_subset02$V161267>= 30 | anes_subset02$V161267<= 39] <- "30-39 years old"
+anes_subset02$age[anes_subset02$V161267>= 40 | anes_subset02$V161267<= 49] <- "40-49 years old"
+anes_subset02$age[anes_subset02$V161267>= 50 | anes_subset02$V161267<= 59] <- "50-59 years old"
+anes_subset02$age[anes_subset02$V161267>= 60] <- "60+ years old"
+anes_subset02$age <- factor(anes_subset02$age)
+
+summary(anes_subset02$age)
+```
+
+
+
+# ................................................
+# Display and Findings
+
+
+# ................................................
 # Workflow
 ## assign issues
 ![create GITHUB issues, who does what .](./issues1.PNG)
@@ -65,5 +252,5 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Lauren --- Submit files  ss
 ![ ](./submit4.png)
-
-# >>> the end
+# .........................................
+# the end
