@@ -1,8 +1,6 @@
 # data with Amelia code 
-library(haven)
 library(descr)
 library(ggplot2)
-library(stargazer)
 library(tidyverse)
 library(Amelia)
 
@@ -71,5 +69,7 @@ am_output2 <- bind_rows(unclass(am_output$imputations), .id = "m") %>%
   nest()
 
 am_clean <- rbind(am_output2[[2]][[1]],am_output2[[2]][[2]],am_output2[[2]][[3]],am_output2[[2]][[4]],am_output2[[2]][[5]])
-
-
+output1 <- lm(primary2016 ~ V161112, data = am_clean)
+summary(output1)
+output2 <- lm(primary2016 ~ V161112 + V161342 + V161307 + V161019 + V161270 + V161113 + V161267 + V161277 + V161004, data = am_clean)
+summary(output2)
