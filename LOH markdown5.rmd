@@ -22,7 +22,7 @@ Contents
 
 Regardless of party, health insurance coverage remains a crucial campaign issue for candidates to resonate with voters on. CNN conducted a series of polls surrounding voting issues for 2018 voters. A 2018 pre-election poll asked likely voters how important an issue was to their vote and 52% said healthcare over other issues. This trend can be attributed to the failed repeal of the ACA in mid-2017. Following the 2018 general election, CNN conducted an exit poll asking voters the most important issue facing the country: healthcare, immigration, economy, and gun policy with 41% of respondents listing healthcare. 
 
-![ ](./cnn-election.png)
+![ ](./final_project/visualizations/cnn-election.png)
 
 Looking at 2020, healthcare remains a crucial issue for voters. According to a poll conducted by Morning Consult and the Bipartisan Policy Centers, 56% of respondents selected health care as the most important issue in their vote choice for the presidential election. Within health policy: 66% of Democrats, 54% of Independents, and 46% of Republicans selected it as their most important issue.  Healthcare remains incredibly important to voters in 2020, making it worth studying.  The issue of healthcare has become incredibly contentious issue within party structures and between the two major parties. To better understand the importance of healthcare, it makes sense to look at the history and implementation of the Patient Protection and Affordable Care Act as the majority of current healthcare surrounds next steps for the legislation. 
 
@@ -47,15 +47,15 @@ Our data source was the American National Election Studies’ (ANES) 2016 Time S
 Our independent variable x tracked whether or not an individual had healthcare coverage. Our independent variable, y, tracked whether or not an individual had voted in the 2016 presidential primary. Our control variables are gender, race, and education level. Based on the data provided and scope of our question, we presented the following hypothesis: 
 
 
-![ ](./linear.png)
+![ ](./final_project/visualizations/linear.png)
 
 ### --------------------------------------
 ### 5. Results
 
 
-![ ](./age-education.png)
+![ ](./final_project/visualizations/age-education.png)
 
-![ ](./employment.png)
+![ ](./final_project/visualizations/employment.png)
 	
 We used the following variables to focus our study on: 
 
@@ -271,13 +271,13 @@ These findings are consistent with literature review.
 
 # Workflow
 ## assign issues
-![create GITHUB issues, who does what .](./issues1.PNG)
+![create GITHUB issues, who does what .](./final_project/visualizations/issues1.PNG)
 
 ## Lauen -- create and upload files
-![ ](./submit1.png)
+![ ](./final_project/visualizations/submit1.png)
 
 ## Olan and Hubbert --- Pull files
-![ ](./pull1.png)
+![ ](./final_project/visualizations/pull1.png)
 
 ## Lauren --- Submit files  ss
-![ ](./submit4.png)
+![ ](./final_project/visualizations/submit4.png)
