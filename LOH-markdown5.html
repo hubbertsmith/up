@@ -598,19 +598,19 @@ summary(output3)</code></pre>
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -0.4593 -0.4593 -0.2545  0.5407  0.7455 
+## -0.4593 -0.4593 -0.2540  0.5407  0.7460 
 ## 
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)        0.25453    0.01138   22.37   &lt;2e-16 ***
-## insurancecoverage  0.20477    0.01192   17.18   &lt;2e-16 ***
+## (Intercept)        0.25400    0.01139   22.30   &lt;2e-16 ***
+## insurancecoverage  0.20531    0.01193   17.21   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.4932 on 21323 degrees of freedom
+## Residual standard error: 0.4931 on 21323 degrees of freedom
 ##   (30 observations deleted due to missingness)
-## Multiple R-squared:  0.01366,    Adjusted R-squared:  0.01361 
-## F-statistic: 295.3 on 1 and 21323 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Multiple R-squared:  0.0137, Adjusted R-squared:  0.01366 
+## F-statistic: 296.3 on 1 and 21323 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre class="r"><code>output4 &lt;- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
 summary(output4)</code></pre>
 <pre><code>## 
@@ -620,31 +620,31 @@ summary(output4)</code></pre>
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -0.8471 -0.4290 -0.2023  0.4832  0.9867 
+## -0.8551 -0.4291 -0.2014  0.4843  0.9870 
 ## 
 ## Coefficients:
 ##                    Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)        0.470102   0.033591  13.995  &lt; 2e-16 ***
-## insurancecoverage  0.077082   0.011852   6.504 8.01e-11 ***
-## jobUnemployed      0.019183   0.007661   2.504   0.0123 *  
-## age30-39           0.047949   0.011265   4.256 2.09e-05 ***
-## age40-49           0.111202   0.011799   9.425  &lt; 2e-16 ***
-## age50-59           0.173121   0.011185  15.478  &lt; 2e-16 ***
-## age60+             0.280717   0.010810  25.968  &lt; 2e-16 ***
-## ACAneutral        -0.109474   0.009009 -12.152  &lt; 2e-16 ***
-## ACAoppose         -0.045495   0.007377  -6.167 7.08e-10 ***
-## edulow            -0.170039   0.011005 -15.452  &lt; 2e-16 ***
-## edumiddle         -0.043145   0.009377  -4.601 4.23e-06 ***
-## sociolow          -0.059732   0.006927  -8.623  &lt; 2e-16 ***
-## sexfemale         -0.117595   0.029648  -3.966 7.32e-05 ***
-## sexmale           -0.121297   0.029684  -4.086 4.40e-05 ***
+## (Intercept)        0.480469   0.033601  14.299  &lt; 2e-16 ***
+## insurancecoverage  0.077629   0.011854   6.549 5.93e-11 ***
+## jobUnemployed      0.018374   0.007649   2.402   0.0163 *  
+## age30-39           0.047025   0.011249   4.181 2.92e-05 ***
+## age40-49           0.111239   0.011784   9.439  &lt; 2e-16 ***
+## age50-59           0.169468   0.011186  15.150  &lt; 2e-16 ***
+## age60+             0.278620   0.010819  25.753  &lt; 2e-16 ***
+## ACAneutral        -0.108594   0.009009 -12.053  &lt; 2e-16 ***
+## ACAoppose         -0.045839   0.007378  -6.213 5.31e-10 ***
+## edulow            -0.169504   0.011000 -15.410  &lt; 2e-16 ***
+## edumiddle         -0.041416   0.009382  -4.415 1.02e-05 ***
+## sociolow          -0.063837   0.006925  -9.219  &lt; 2e-16 ***
+## sexfemale         -0.125539   0.029640  -4.236 2.29e-05 ***
+## sexmale           -0.129498   0.029677  -4.364 1.29e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.4721 on 21311 degrees of freedom
+## Residual standard error: 0.472 on 21311 degrees of freedom
 ##   (30 observations deleted due to missingness)
-## Multiple R-squared:  0.09661,    Adjusted R-squared:  0.09606 
-## F-statistic: 175.3 on 13 and 21311 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Multiple R-squared:  0.09681,    Adjusted R-squared:  0.09626 
+## F-statistic: 175.7 on 13 and 21311 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance. this positive effect shows with high confidence (near zero P).</p>
 <p>These findings are consistent with literature review.</p>
 </div>

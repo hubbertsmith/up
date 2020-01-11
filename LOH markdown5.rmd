@@ -16,6 +16,7 @@ Contents
 ## Data and Methodology
 ## Statistical Methods
 ## Results
+## Summary
 
 ### --------------------------------------
 ### 1. Political Context
@@ -251,8 +252,7 @@ summary(output4)
 
 
 
-shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance.
-this positive effect shows with high confidence (near zero P).
+shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance, with high confidence (near zero P).
 
 These findings are consistent with literature review.
 
@@ -269,6 +269,12 @@ These findings are consistent with literature review.
   Enten, H. (2019, March 26). Unlike Mueller, health care will likely be a top issue in 2020. Retrieved from https://www.cnn.com/2019/03/26/politics/health-care-2020-campaign-issue/index.html.
   
   Baicker, K., & Finkelstein, A. (2019). The Impact of Medicaid Expansion on Voter Participation: Evidence from the Oregon Health Insurance Experiment. Quarterly Journal of Political Science, 14(4), 383–400. Retrieved from https://economics.mit.edu/files/18481
+  
+    
+### --------------------------------------
+# Summary
+
+
   
 ### --------------------------------------
 # THE END <<<
