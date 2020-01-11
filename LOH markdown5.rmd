@@ -90,9 +90,31 @@ output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, dat
 
 ## Results 
 
-One issue with our study and data is significant multicollinearity among our variables. Similar to the literature review, we found 
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.25373    0.01139   22.29   <2e-16 ***
+V161112      0.20562    0.01192   17.25   <2e-16 *** <<< have insurance
 
+Linear model (lm) 
+shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance.
+this positive effect shows with high confidence (near zero P).
 
+These findings are consistent with literature review.
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.8897 -0.4212 -0.1977  0.4735  0.9786 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.1937111  0.0234733  -8.252  < 2e-16 *** 
+V161112      0.0750318  0.0117961   6.361 2.05e-10 *** << have insurance
+V161342      0.0051372  0.0065242   0.787   0.4311    
+V161307      0.0506190  0.0069456   7.288 3.26e-13 *** << social class
+V161019     -0.0037277  0.0052687  -0.708   0.4793    
+V161270      0.0295724  0.0014969  19.756  < 2e-16 *** << education
+V161113     -0.0509714  0.0044869 -11.360  < 2e-16 *** << favor ACA
+V161267      0.0062788  0.0002075  30.262  < 2e-16 *** <<< respondent age
+V161277     -0.0169167  0.0074071  -2.284   0.0224 *  
 
 # footnotes
 

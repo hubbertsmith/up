@@ -419,7 +419,15 @@ summary {
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
-<p>One issue with our study and data is significant multicollinearity among our variables. Similar to the literature review, we found</p>
+<pre><code>        Estimate Std. Error t value Pr(&gt;|t|)    </code></pre>
+<p>(Intercept) 0.25373 0.01139 22.29 &lt;2e-16 <strong><em> V161112 0.20562 0.01192 17.25 &lt;2e-16 </em></strong> &lt;&lt;&lt; have insurance</p>
+<p>Linear model (lm) shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance. this positive effect shows with high confidence (near zero P).</p>
+<p>These findings are consistent with literature review.</p>
+<p>Residuals: Min 1Q Median 3Q Max -0.8897 -0.4212 -0.1977 0.4735 0.9786</p>
+<p>Coefficients: Estimate Std. Error t value Pr(&gt;|t|)<br />
+(Intercept) -0.1937111 0.0234733 -8.252 &lt; 2e-16 *** V161112 0.0750318 0.0117961 6.361 2.05e-10 *** &lt;&lt; have insurance V161342 0.0051372 0.0065242 0.787 0.4311<br />
+V161307 0.0506190 0.0069456 7.288 3.26e-13 *** &lt;&lt; social class V161019 -0.0037277 0.0052687 -0.708 0.4793<br />
+V161270 0.0295724 0.0014969 19.756 &lt; 2e-16 *** &lt;&lt; education V161113 -0.0509714 0.0044869 -11.360 &lt; 2e-16 *** &lt;&lt; favor ACA V161267 0.0062788 0.0002075 30.262 &lt; 2e-16 *** &lt;&lt;&lt; respondent age V161277 -0.0169167 0.0074071 -2.284 0.0224 *</p>
 </div>
 <div id="footnotes" class="section level1">
 <h1>footnotes</h1>
