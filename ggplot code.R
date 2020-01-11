@@ -77,10 +77,18 @@ output3 <- lm(primary2016 ~ insurance, data = am_clean)
 summary(output3)
 
 
+<<<<<<< HEAD
 output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex + party, data = am_clean)
 summary(output4)
 
 table(output4$coefficients)
+=======
+table(output4$coefficients)
+
+coefficients <- output4$coefficients
+
+hist(coefficients, col= 'slate grey')
+>>>>>>> ad9f6724ea4a317ceb3a4bb236c2992124723b0e
 
 coefficients <- output4$coefficients
 

@@ -16,6 +16,7 @@ Contents
 ## Data and Methodology
 ## Statistical Methods
 ## Results
+## Summary
 
 ### --------------------------------------
 ### 1. Political Context
@@ -48,15 +49,6 @@ Our independent variable x tracked whether or not an individual had healthcare c
 
 
 ![ ](./final_project/visualizations/linear.png)
-
-### --------------------------------------
-### 5. Results
-
-
-![ ](./final_project/visualizations/age-education.png)
-
-![ ](./final_project/visualizations/employment.png)
-	
 We used the following variables to focus our study on: 
 
 V161277 - PRE: Initial R employment status, start of occupation module
@@ -85,6 +77,42 @@ Recoded as “voted in presidential primary”
 
 V161019 – PRE: Party of Registration
 	Recoded as “party”
+### --------------------------------------
+### 5. Results
+
+
+![ ](./final_project/visualizations/age-education.png)
+
+![ ](./final_project/visualizations/employment.png)
+	
+	#### Regressions
+
+```{r}
+#regressions
+
+am_clean$insurance <- relevel(am_clean$insurance, ref = "no coverage")
+
+output3 <- lm(primary2016 ~ insurance, data = am_clean)
+summary(output3)
+
+output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
+summary(output4)
+
+```
+Output 1:
+
+The bivariate regression shows a fairly symmetrical distribution of residuals which demonstrates that the model predicts points that occur pretty closely to the actual observed points. The expected value of the coefficient estimate for the intercept demonstrates that 25% of all those surveyed in the dataset to show up to vote. Essentially, 25% of those surveyed regardless of possessing insurance are going to show up to vote in the presidential primary. The coefficient estimate demonstrates a positive relationship for respondents with coverage and they have 20% greater odds than those without insurance to vote in a presidential primary. This finding accepts the null hypothesis which is people that don’t have healthcare are less likely to vote in the presidential primary. 
+
+Output 2: 
+
+Again, the residuals for second regression model, with all selected variables, shows a symmetrical distribution which affirms the predicted model fit to the actual data. When including all selected variables, the intercept coefficient increases from .25 to .48. The main variable of interest, whether or not the respondent has healthcare coverage, remains stronger for those who possess insurance. However, the factor has decreased by 65%. In terms of employment, this model shows that employment status and gender have little to no affect on whether or not the respondent are likely to vote in the presidential primary. As expected, the model reaffirms that the higher the level of education and socioeconomic status the more likely that respondent is to vote in a presidential primary. In general, older populations are a larger percentage of the voting bloc in the United States. The multivariate regression reaffirms that as respondents increase in age, measured here by decade, the more likely they are to participate in a presidential primary. In regard to the variable that measures the respondent’s opinion regarding implementation of the Affordable Care Act (ACA), this model shows that those who either oppose or are in favor in the ACA are more likely to vote in the presidential primary than those with a neutral position. 
+
+These findings are consistent with literature review.
+	### Histogram
+
+![ ](./final_project/visualizations/histogram.png)
+
+For the second output, a multivariable regression, we ran a histogram to get a visual representation of the coefficients. The majority of our coefficients had a weak correlation, but we did find that age had a significant impact on the regression.  
 
 ### --------------------------------------
 ### code run 
@@ -234,28 +262,6 @@ am_clean$party[am_clean$V161019== 3] <- "ind_other"
 am_clean$party <- factor(am_clean$party)
 ```
 
-#### Regressions
-
-```{r}
-#regressions
-
-am_clean$insurance <- relevel(am_clean$insurance, ref = "no coverage")
-
-output3 <- lm(primary2016 ~ insurance, data = am_clean)
-summary(output3)
-
-output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
-summary(output4)
-
-```
-
-
-
-shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance.
-this positive effect shows with high confidence (near zero P).
-
-These findings are consistent with literature review.
-
 ### --------------------------------------
 
 # Sources
@@ -263,6 +269,12 @@ These findings are consistent with literature review.
   Enten, H. (2019, March 26). Unlike Mueller, health care will likely be a top issue in 2020. Retrieved from https://www.cnn.com/2019/03/26/politics/health-care-2020-campaign-issue/index.html.
   
   Baicker, K., & Finkelstein, A. (2019). The Impact of Medicaid Expansion on Voter Participation: Evidence from the Oregon Health Insurance Experiment. Quarterly Journal of Political Science, 14(4), 383–400. Retrieved from https://economics.mit.edu/files/18481
+  
+    
+### --------------------------------------
+# Summary
+
+
   
 ### --------------------------------------
 # THE END <<<
