@@ -89,7 +89,7 @@ V161019 – PRE: Party of Registration
 ### --------------------------------------
 ### code run 
 
-```{r}
+```{r message=FALSE, results='hide'}
 # data with Amelia code 
 library(ggplot2)
 library(tidyverse)
@@ -232,7 +232,11 @@ am_clean$party[am_clean$V161019== 1] <- "rep"
 am_clean$party[am_clean$V161019== 2] <- "ind_other"
 am_clean$party[am_clean$V161019== 3] <- "ind_other"
 am_clean$party <- factor(am_clean$party)
+```
 
+#### Regressions
+
+```{r}
 #regressions
 
 am_clean$insurance <- relevel(am_clean$insurance, ref = "no coverage")
