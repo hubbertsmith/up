@@ -5,7 +5,6 @@ library(dplyr)
 
 #dependent variable 
 #pre 2016: voted in presidential primary
-
 am_clean$dep[am_clean$primary2016== 1] <- "voted"
 am_clean$dep[am_clean$primary2016== 0] <- "abstained"
 am_clean$dep <- factor(am_clean$dep)
@@ -79,7 +78,6 @@ summary(output3)
 
 output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
 summary(output4)
-
 
 
 

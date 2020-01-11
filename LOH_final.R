@@ -29,10 +29,10 @@ anes_subset02$V161307 <- recode(anes_subset02$V161307,
 
 
 anes_subset02$V161019 <- recode(anes_subset02$V161019,
-                                "(1) 1. Democratic party" = 0,
-                                "(2) 2. Republican party" = 1, 
-                                "(4) 4. None or 'independent" = 2,
-                                "(5) 5. Other SPECIFY" = 2)
+                                "(1) 1. Democratic party" = 1,
+                                "(2) 2. Republican party" = 2, 
+                                "(4) 4. None or 'independent" = 3,
+                                "(5) 5. Other SPECIFY" = 3)
 
 anes_subset02$V161270 <- recode(anes_subset02$V161270, 
                                 "(02) 2. 1st, 2nd, 3rd or 4th grade" = 2, 
@@ -135,9 +135,9 @@ am_clean$job[am_clean$V161277== 0] <- "Unemployed"
 am_clean$job <- factor(am_clean$job)
 
 am_clean$party <- -1
-am_clean$party[am_clean$V161019== 0] <- "dem"
-am_clean$party[am_clean$V161019== 1] <- "rep"
-am_clean$party[am_clean$V161019== 2] <- "ind_other"
+am_clean$party[am_clean$V161019== 1] <- "dem"
+am_clean$party[am_clean$V161019== 2] <- "rep"
+am_clean$party[am_clean$V161019== 3] <- "ind_other"
 am_clean$party[am_clean$V161019== 3] <- "ind_other"
 am_clean$party <- factor(am_clean$party)
 
@@ -152,10 +152,9 @@ am_clean$insurance <- relevel(am_clean$insurance, ref = "no coverage")
 output3 <- lm(primary2016 ~ insurance, data = am_clean)
 summary(output3)
 
-output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
+output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex + party, data = am_clean)
 summary(output4)
 
 ggplot(data = am_clean) + 
   geom_bar(mapping = aes(x= age, fill = edu))
-
 
