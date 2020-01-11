@@ -155,3 +155,7 @@ summary(output3)
 output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
 summary(output4)
 
+ggplot(data = am_clean) + 
+  geom_bar(mapping = aes(x= age, fill = edu))
+
+
