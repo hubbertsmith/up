@@ -386,6 +386,9 @@ summary {
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
 <div id="section-1" class="section level3">
 <h3>————————————–</h3>
 </div>
@@ -598,19 +601,19 @@ summary(output3)</code></pre>
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -0.4593 -0.4593 -0.2540  0.5407  0.7460 
+## -0.4593 -0.4593 -0.2543  0.5407  0.7457 
 ## 
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)        0.25400    0.01139   22.30   &lt;2e-16 ***
-## insurancecoverage  0.20531    0.01193   17.21   &lt;2e-16 ***
+## (Intercept)        0.25426    0.01139   22.33   &lt;2e-16 ***
+## insurancecoverage  0.20504    0.01192   17.20   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.4931 on 21323 degrees of freedom
+## Residual standard error: 0.4932 on 21323 degrees of freedom
 ##   (30 observations deleted due to missingness)
-## Multiple R-squared:  0.0137, Adjusted R-squared:  0.01366 
-## F-statistic: 296.3 on 1 and 21323 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Multiple R-squared:  0.01368,    Adjusted R-squared:  0.01363 
+## F-statistic: 295.8 on 1 and 21323 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre class="r"><code>output4 &lt;- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
 summary(output4)</code></pre>
 <pre><code>## 
@@ -620,32 +623,32 @@ summary(output4)</code></pre>
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -0.8551 -0.4291 -0.2014  0.4843  0.9870 
+## -0.8553 -0.4267 -0.1975  0.4809  0.9857 
 ## 
 ## Coefficients:
 ##                    Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)        0.480469   0.033601  14.299  &lt; 2e-16 ***
-## insurancecoverage  0.077629   0.011854   6.549 5.93e-11 ***
-## jobUnemployed      0.018374   0.007649   2.402   0.0163 *  
-## age30-39           0.047025   0.011249   4.181 2.92e-05 ***
-## age40-49           0.111239   0.011784   9.439  &lt; 2e-16 ***
-## age50-59           0.169468   0.011186  15.150  &lt; 2e-16 ***
-## age60+             0.278620   0.010819  25.753  &lt; 2e-16 ***
-## ACAneutral        -0.108594   0.009009 -12.053  &lt; 2e-16 ***
-## ACAoppose         -0.045839   0.007378  -6.213 5.31e-10 ***
-## edulow            -0.169504   0.011000 -15.410  &lt; 2e-16 ***
-## edumiddle         -0.041416   0.009382  -4.415 1.02e-05 ***
-## sociolow          -0.063837   0.006925  -9.219  &lt; 2e-16 ***
-## sexfemale         -0.125539   0.029640  -4.236 2.29e-05 ***
-## sexmale           -0.129498   0.029677  -4.364 1.29e-05 ***
+## (Intercept)        0.480731   0.033601  14.307  &lt; 2e-16 ***
+## insurancecoverage  0.076369   0.011839   6.451 1.14e-10 ***
+## jobUnemployed      0.018469   0.007630   2.420 0.015512 *  
+## age30-39           0.043728   0.011241   3.890 0.000101 ***
+## age40-49           0.106024   0.011762   9.014  &lt; 2e-16 ***
+## age50-59           0.172460   0.011168  15.442  &lt; 2e-16 ***
+## age60+             0.279744   0.010794  25.916  &lt; 2e-16 ***
+## ACAneutral        -0.106852   0.009003 -11.869  &lt; 2e-16 ***
+## ACAoppose         -0.045138   0.007371  -6.124 9.28e-10 ***
+## edulow            -0.170925   0.010948 -15.612  &lt; 2e-16 ***
+## edumiddle         -0.043776   0.009352  -4.681 2.87e-06 ***
+## sociolow          -0.067074   0.006888  -9.737  &lt; 2e-16 ***
+## sexfemale         -0.121560   0.029617  -4.104 4.07e-05 ***
+## sexmale           -0.125562   0.029655  -4.234 2.30e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.472 on 21311 degrees of freedom
+## Residual standard error: 0.4716 on 21311 degrees of freedom
 ##   (30 observations deleted due to missingness)
-## Multiple R-squared:  0.09681,    Adjusted R-squared:  0.09626 
-## F-statistic: 175.7 on 13 and 21311 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance. this positive effect shows with high confidence (near zero P).</p>
+## Multiple R-squared:  0.09837,    Adjusted R-squared:  0.09782 
+## F-statistic: 178.8 on 13 and 21311 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>shows positive effect on Presidential Primay voting behavior for those who are covered with health insurance, with high confidence (near zero P).</p>
 <p>These findings are consistent with literature review.</p>
 </div>
 </div>
@@ -668,9 +671,15 @@ summary(output4)</code></pre>
 <h3>————————————–</h3>
 </div>
 </div>
+<div id="summary-1" class="section level1">
+<h1>Summary</h1>
+<div id="section-10" class="section level3">
+<h3>————————————–</h3>
+</div>
+</div>
 <div id="the-end" class="section level1">
 <h1>THE END &lt;&lt;&lt;</h1>
-<div id="section-10" class="section level3">
+<div id="section-11" class="section level3">
 <h3>————————————–</h3>
 </div>
 </div>
