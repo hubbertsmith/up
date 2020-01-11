@@ -76,8 +76,12 @@ anes_subset03$insurance <- relevel(am_clean$insurance, ref = "no coverage")
 output3 <- lm(primary2016 ~ insurance, data = am_clean)
 summary(output3)
 
-output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
+
+output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex + party, data = am_clean)
 summary(output4)
 
+table(output4$coefficients)
 
+coefficients <- output4$coefficients
 
+hist(coefficients, col= 'slate grey')
