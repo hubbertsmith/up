@@ -80,6 +80,10 @@ summary(output3)
 output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
 summary(output4)
 
+table(output4$coefficients)
 
+coefficients <- output4$coefficients
+
+hist(coefficients, col= 'slate grey')
 
 

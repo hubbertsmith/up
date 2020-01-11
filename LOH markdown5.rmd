@@ -258,6 +258,12 @@ These findings are consistent with literature review.
 
 ### --------------------------------------
 
+### Histogram
+
+![ ](./final_project/visualizations/histogram.png)
+
+### --------------------------------------
+
 # Sources
 
   Enten, H. (2019, March 26). Unlike Mueller, health care will likely be a top issue in 2020. Retrieved from https://www.cnn.com/2019/03/26/politics/health-care-2020-campaign-issue/index.html.

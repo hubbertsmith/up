@@ -158,4 +158,10 @@ summary(output4)
 ggplot(data = am_clean) + 
   geom_bar(mapping = aes(x= age, fill = edu))
 
+table(output4$coefficients)
+
+coefficients <- output4$coefficients
+
+hist(coefficients, col= 'slate grey')
+
 
