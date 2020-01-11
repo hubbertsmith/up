@@ -1,4 +1,5 @@
 library(ggplot2)
+library(dplyr)
 
 #rename
 
@@ -45,12 +46,12 @@ am_clean$ACA[am_clean$V161113== 3] <- "neutral"
 am_clean$ACA <- factor(am_clean$ACA)
 
 #new variable: age 
-
-am_clean$age[am_clean$V161267 >= 18] <- "18-30 years old"
-am_clean$age[am_clean$V161267 >= 30] <- "30-39 years old"
-am_clean$age[am_clean$V161267 >= 40] <- "40-49 years old"
-am_clean$age[am_clean$V161267 >= 50] <- "50-59 years old"
-am_clean$age[am_clean$V161267 >= 60] <- "60+ years old"
+am_clean$age <- -1
+am_clean$age[am_clean$V161267 >= 18] <- "18-30"
+am_clean$age[am_clean$V161267 >= 30] <- "30-39"
+am_clean$age[am_clean$V161267 >= 40] <- "40-49"
+am_clean$age[am_clean$V161267 >= 50] <- "50-59"
+am_clean$age[am_clean$V161267 >= 60] <- "60+"
 am_clean$age <- factor(am_clean$age)
 
 #new variable: employment status
@@ -79,4 +80,6 @@ summary(output3)
 output4 <- lm(primary2016 ~ insurance + job + age + ACA + edu + socio + sex, data = am_clean)
 summary(output4)
 
-ggplot(data=am_clean) + geom_bar(mapping = aes(x = job, fill = job))
+
+
+
