@@ -17,10 +17,14 @@ knitr::opts_chunk$set(echo = TRUE)
 a.	Intellectual or Political Context
 
 Regardless of party, health insurance coverage remains a crucial campaign issue for candidates to resonate with voters on. CNN conducted a series of polls surrounding voting issues for 2018 voters. A 2018 pre-election poll asked likely voters how important an issue was to their vote and 52% said healthcare over other issues. This trend can be attributed to the failed repeal of the ACA in mid-2017. Following the 2018 general election, CNN conducted an exit poll asking voters the most important issue facing the country: healthcare, immigration, economy, and gun policy with 41% of respondents listing healthcare. 
- 
+
+fig.align(default = 'center') 
 
 ![ ](./cnn-election.png)
- Looking at 2020, healthcare remains a crucial issue for voters. According to a poll conducted by Morning Consult and the Bipartisan Policy Centers, 56% of respondents selected health care as the most important issue in their vote choice for the presidential election. Within health policy: 66% of Democrats, 54% of Independents, and 46% of Republicans selected it as their most important issue.  Healthcare remains incredibly important to voters in 2020, making it worth studying.  The issue of healthcare has become incredibly contentious issue within party structures and between the two major parties. To better understand the importance of healthcare, it makes sense to look at the history and implementation of the Patient Protection and Affordable Care Act as the majority of current healthcare surrounds next steps for the legislation. 
+
+
+
+Looking at 2020, healthcare remains a crucial issue for voters. According to a poll conducted by Morning Consult and the Bipartisan Policy Centers, 56% of respondents selected health care as the most important issue in their vote choice for the presidential election. Within health policy: 66% of Democrats, 54% of Independents, and 46% of Republicans selected it as their most important issue.  Healthcare remains incredibly important to voters in 2020, making it worth studying.  The issue of healthcare has become incredibly contentious issue within party structures and between the two major parties. To better understand the importance of healthcare, it makes sense to look at the history and implementation of the Patient Protection and Affordable Care Act as the majority of current healthcare surrounds next steps for the legislation. 
 
  The Patient Protection and Affordable Care Act, commonly known as Obamacare. Signed in 2010, the ACA was signed into law to expand Medicaid with emphasis on making health insurance more affordable and supporting innovation to lower individual’s overall cost. 
 The major provisions of the ACA were implemented by 2014, covering an additional 20 to 24 million people. The 2010 legislation has been extremely divisive since it was passed. Liberals believe it did not go far enough in providing coverage, while conservatives have rallied against the individual mandate. This divisiveness provided voters in 2016, the first presidential election year since the bill’s full implementation, a unique set of circumstances. We looked towards this election to get a better understanding of how healthcare coverage specifically impacts elections, attempting to bypass rhetoric about the issue and see how those directly impacted responded. We believe this data will give insight to the 2020 primaries where healthcare remains a prominent issue and over twenty candidates are currently vying for the Democratic nomination. By focusing on 2016 primaries, a year with a large number of Republican candidates, we hope to get a better understanding of the issue heading into 2020. As healthcare continues to be a key issue across demographics, this data will prove valuable to candidates on the federal and state level. 
@@ -124,10 +128,10 @@ V161277     -0.0169167  0.0074071  -2.284   0.0224 *
 
 # ................................................
 # Display and Findings
-![ ](./people_v_sex.png)
+![ ](./age-education.png)
 
 
-![ ](./people_v_age.png)
+![ ](./employment.png)
 
 
 # ................................................
